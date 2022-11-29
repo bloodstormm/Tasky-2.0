@@ -1,11 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
-    body {
-        @apply bg-darkBlue text-whity font-Lato
-    }
+  body {
+    @apply h-screen bg-darkGray bg-cover bg-center bg-no-repeat font-Lato text-whity selection:bg-accent;
+  }
+  .red__gradient {
+    background: linear-gradient(
+      165deg,
+      #ffa5a500 0%,
+      #d2545f44 20%,
+      #d2545e 100%
+    );
+    filter: blur(120px);
+  }
+  .redWeak__gradient {
+    background: linear-gradient(
+      65deg,
+      #ffa5a500 0%,
+      #d2545f44 60%,
+      #d2545e 100%
+    );
+    filter: blur(120px);
+  }
+
+  .pink__gradient {
+    background: linear-gradient(90deg, #fa9ba3 0%, #d2545e 100%);
+    filter: blur(400px);
+  }
+
+  .white__gradient {
+    background: rgba(255, 255, 255, 0.6);
+    filter: blur(750px);
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #424242;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9c9192;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #949494;
 }

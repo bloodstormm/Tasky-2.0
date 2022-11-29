@@ -7,7 +7,7 @@ export const useTodoStore = create<TodoStoreType>()(
   devtools(
     persist((set, get) => ({ ...createTodoSlice(set, get) }), {
       name: "todo",
-      getStorage: () => sessionStorage,
+      getStorage: () => localStorage,
     })
   )
 );

@@ -12,10 +12,13 @@
     "@headlessui/react": "^1.7.4",
     "@hookform/resolvers": "^2.9.10",
     "@tailwindcss/forms": "^0.5.3",
+    "framer-motion": "^7.6.12",
+    "prettier-plugin-tailwindcss": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
     "react-icons": "^4.6.0",
+    "react-router-dom": "^6.4.3",
     "uuid": "^9.0.0",
     "yup": "^0.32.11",
     "zustand": "^4.1.4"

@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkBlue: "#1f212c",
-        blueGray: "#2a2c3a",
+        darkGray: "#1a1f25",
+        grayish: "#272c32",
         whity: "#f0f8ff",
-        accent: "#2c5bff",
+        accent: "#883f47",
       },
       fontFamily: {
         Lato: ["Lato", "sans-serif"],

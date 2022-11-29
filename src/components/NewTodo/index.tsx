@@ -1,4 +1,3 @@
-import { FormEvent, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsArrowReturnRight } from "react-icons/bs";
 import { useTodoStore } from "../../store/todoStore";
@@ -11,7 +10,7 @@ export interface ITaskInput {
 }
 
 export const NewTodo = () => {
-  const { addTodo, removeAll } = useTodoStore();
+  const addTodo = useTodoStore((state) => state.addTodo);
 
   // Não permitir adicionar se estiver vazio
   const validationTask = yup.object().shape({
@@ -36,23 +35,24 @@ export const NewTodo = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(addTask)} className="w-full mt-16">
-        <div className="relative w-1/2 focus:w-[55%] mx-auto">
+      <form
+        onSubmit={handleSubmit(addTask)}
+        className="mt-8 w-full text-center sm:mt-16"
+      >
+        <div className="relative mx-auto w-3/4 focus:w-[55%] sm:w-1/2">
           <input
             type="text"
-            className="p-4 relative focus:p-6 bg-blueGray rounded-lg outline-none w-full transition-all duration-300"
+            className="relative w-full rounded-lg border-gray-700 bg-grayish/40
+            p-4 outline-none backdrop-blur-sm backdrop-brightness-125 duration-300 focus:border-accent focus:p-6 focus:ring-0"
             placeholder="Criar uma tarefa..."
             {...register("task")}
           />
-          <button className="flex items-center h-full top-0 absolute right-4">
-            <BsArrowReturnRight className="w-5 h-5" />
+          <button className="absolute top-0 right-4 flex h-full items-center">
+            <BsArrowReturnRight className="h-5 w-5" />
           </button>
         </div>
-        <p className="text-red-400 font-medium mt-2">{errors.task?.message}</p>
+        <p className="mt-2 font-medium text-red-400">{errors.task?.message}</p>
       </form>
-      <button className="mt-8 bg-accent rounded-lg p-4" onClick={removeAll}>
-        Remover tudo
-      </button>
     </>
   );
 };

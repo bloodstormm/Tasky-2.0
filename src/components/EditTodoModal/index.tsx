@@ -5,6 +5,8 @@ import { ITaskInput } from "../NewTodo";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiTrash } from "react-icons/fi";
 
 type EditTodoModalProps = {
   isOpen: boolean;
@@ -19,12 +21,20 @@ export const EditTodoModal = ({
   todoContent,
   todoID,
 }: EditTodoModalProps) => {
-  const { updateTodo } = useTodoStore();
+  const updateTodo = useTodoStore((state) => state.updateTodo);
+  const removeTodo = useTodoStore((state) => state.removeTodo);
+
+  // Botão de remover dentro do modal
+  const removeTask = () => {
+    setIsOpen(false);
+    removeTodo(todoID);
+  };
 
   // Não permitir adicionar se estiver vazio
   const validationTask = yup.object().shape({
     task: yup.string().required("Preencha esse campo!"),
   });
+
   const {
     register,
     handleSubmit,
@@ -39,50 +49,94 @@ export const EditTodoModal = ({
     setIsOpen(false);
   };
 
+  // Animacoes do Framer Motion
+  const showAnimation = {
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0, opacity: 0 },
+    transition: { type: "spring", ease: "easeInOut", duration: 0.7 },
+  };
+  const fadeAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { ease: "easeInOut", duration: 0.3 },
+  };
+
   return (
-    <Dialog
-      open={isOpen}
-      onClose={() => setIsOpen(false)}
-      className="z-50 fixed inset-0 flex items-center justify-center"
-    >
-      <Dialog.Overlay className="fixed inset-0  bg-gray-900/40 " />
-      <Dialog.Panel className="z-50 items-center justify-center h-full flex flex-col">
-        <div className="bg-darkBlue h-1/2 p-8 min-w-[800px] rounded-xl">
-          <Dialog.Title className="text-4xl font-semibold">
-            Editar Tarefa: ✏️
-          </Dialog.Title>
+    <AnimatePresence>
+      {isOpen && (
+        <Dialog
+          static
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center"
+        >
+          <Dialog.Overlay
+            as={motion.div}
+            {...fadeAnimation}
+            className="fixed inset-0 bg-[#221012]/40"
+          />
+          <Dialog.Panel
+            {...showAnimation}
+            as={motion.div}
+            className="z-50 flex h-full flex-col items-center justify-center"
+          >
+            <div className="relative h-1/2 min-w-[800px] rounded-xl bg-darkGray p-8">
+              <Dialog.Title className="text-3xl font-semibold">
+                Editar Tarefa: ✏️
+              </Dialog.Title>
 
-          <form onSubmit={handleSubmit(updateTask)} className="mt-10">
-            <label htmlFor="task" className="text-lg">
-              Conteúdo da tarefa:
-            </label>
-            <input
-              type="text"
-              defaultValue={todoContent}
-              {...register("task")}
-              className="p-4 relative my-2 bg-blueGray rounded-lg outline-none w-full transition-all duration-300"
-            />
-            <p className="text-red-400 font-medium mt-2">
-              {errors.task?.message}
-            </p>
-
-            <div className="flex gap-4 mt-12">
-              <button type="submit" className="w-28 h-12 bg-accent rounded-lg">
-                Atualizar
-              </button>
-              <button
-                type="reset"
-                className="w-28 h-12 bg-gray-200/5 rounded-lg"
-                onClick={() => {
-                  setIsOpen(false), reset();
-                }}
+              <div className="mt-8 border-t border-gray-600"></div>
+              <form
+                onSubmit={handleSubmit(updateTask)}
+                className=" flex items-center gap-4 pt-8"
               >
-                Cancelar
-              </button>
+                <label htmlFor="task" className="min-w-[180px] text-lg">
+                  Conteúdo da tarefa:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={todoContent}
+                  {...register("task")}
+                  className=" relative my-2 w-full rounded-lg border-gray-700 bg-grayish p-4 outline-none duration-300 hover:border-accent focus:border-accent focus:ring-0"
+                />
+                <p className="mt-2 font-medium text-red-400">
+                  {errors.task?.message}
+                </p>
+              </form>
+              <div className="absolute inset-x-0 bottom-0 flex w-full items-center justify-between rounded-b-xl bg-grayish p-4">
+                <button
+                  className="flex items-center gap-3 p-4 outline-none hover:text-red-400"
+                  onClick={removeTask}
+                >
+                  <FiTrash className="h-5 w-5" />
+                  <p>Excluir</p>
+                </button>
+
+                <div className="flex gap-4">
+                  <button
+                    type="reset"
+                    className="h-12 w-28 rounded-lg bg-gray-200/5 transition hover:bg-gray-700/20"
+                    onClick={() => {
+                      setIsOpen(false), reset();
+                    }}
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    className="hover:bg-accent/ h-12 w-28 rounded-lg bg-accent transition hover:contrast-125"
+                    onClick={handleSubmit(updateTask)}
+                  >
+                    Atualizar
+                  </button>
+                </div>
+              </div>
             </div>
-          </form>
-        </div>
-      </Dialog.Panel>
-    </Dialog>
+          </Dialog.Panel>
+        </Dialog>
+      )}
+    </AnimatePresence>
   );
 };
