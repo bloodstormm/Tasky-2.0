@@ -18,11 +18,11 @@ export const About = (props: Props) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "100%" }}
       transition={{ duration: 1.2, ease: [0.6, 0.01, -0.05, 0.9] }}
-      className="container mx-auto h-screen w-screen "
+      className="container mx-auto h-screen w-screen px-8 xl:px-0 "
     >
       <div
-        className="relative mx-auto flex h-full flex-col items-center gap-x-24
-        text-center lg:flex-row lg:pt-16 lg:text-left"
+        className="relative mx-auto flex h-full flex-col items-center gap-x-10 text-center
+        lg:flex-row lg:pt-16 lg:text-left 2xl:gap-x-24"
       >
         <motion.div
           initial={{ opacity: 0, y: "-80%" }}
@@ -36,11 +36,14 @@ export const About = (props: Props) => {
             transition={{ duration: 1.2, ease: [0.6, 0.01, -0.05, 0.9] }}
             src={imgAbout}
             alt=""
-            className="mx-auto mb-10 w-full rounded-3xl p-4 sm:mb-0 md:w-3/5 2xl:w-4/5"
+            className="mx-auto mb-10 w-full rounded-3xl p-4 sm:mb-0 md:w-3/5 lg:w-full xl:w-4/5"
           />
         </motion.div>
         <div className="z-10 mt-20 flex flex-1 flex-col items-center justify-center p-8 pb-14 sm:pt-36 lg:w-auto lg:items-start lg:pt-0 xl:p-0">
-          <h1 className="font-primary mb-12 text-[40px] font-bold uppercase leading-[120%] tracking-wider lg:text-[56px] xl:text-[88px]">
+          <h1
+            className="font-primary mb-8 text-[40px] font-bold uppercase leading-[120%] tracking-wider lg:text-[52px]
+           xl:mb-12 xl:text-[66px] 2xl:text-[82px]"
+          >
             Sobre o Tasky
           </h1>
           <p className="mb-8">

@@ -32,7 +32,7 @@ export const TodoContent = ({ todo }: Props) => {
       }}
       key={todo.id}
       className={`${todo.status_completed && "bg-[#13131a] line-through"} 
-        z-0 flex w-full items-center justify-between rounded-lg  bg-[#232930] py-7 px-8 `}
+        z-0 flex min-h-[5rem] w-full items-center justify-between  rounded-lg bg-[#232930] px-7 `}
     >
       <div className="flex gap-4">
         <input

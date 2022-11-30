@@ -37,12 +37,12 @@ export const NewTodo = () => {
     <>
       <form
         onSubmit={handleSubmit(addTask)}
-        className="mt-8 w-full text-center sm:mt-16"
+        className="mt-8 w-full text-center xl:mt-12 2xl:mt-16"
       >
-        <div className="relative mx-auto w-3/4 focus:w-[55%] sm:w-1/2">
+        <div className="relative z-30 mx-auto w-3/4 focus:w-[55%] sm:w-1/2">
           <input
             type="text"
-            className="relative w-full rounded-lg border-gray-700 bg-grayish/40
+            className="relative  w-full rounded-lg border-gray-700 bg-grayish/40
             p-4 outline-none backdrop-blur-sm backdrop-brightness-125 duration-300 focus:border-accent focus:p-6 focus:ring-0"
             placeholder="Criar uma tarefa..."
             {...register("task")}

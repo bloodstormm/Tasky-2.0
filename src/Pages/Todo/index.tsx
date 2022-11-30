@@ -1,4 +1,3 @@
-import React from "react";
 import { NewTodo } from "../../components/NewTodo";
 import { RemoveAllButton } from "../../components/RemoveAll";
 import { TodoList } from "../../components/TodoList";
@@ -14,7 +13,7 @@ export const Todo = () => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: "-70%" }}
     transition={{ duration: 1, ease: [0.6, 0.01, -0.05, 0.9] }}
-    className="container relative z-10 mx-auto flex flex-col items-center overflow-hidden py-8 sm:p-8"
+    className="container relative z-10 mx-auto flex flex-col items-center py-8 sm:p-8 lg:overflow-hidden"
   >
     <motion.h1
       initial={{ opacity: 0, y: "80%" }}
@@ -31,7 +30,7 @@ export const Todo = () => (
 
     <Link
       to="/about"
-      className="absolute right-8 text-3xl brightness-150 transition hover:text-accent sm:right-0"
+      className="absolute right-8 text-3xl brightness-150 transition hover:text-accent 2xl:right-0"
     >
       <HiOutlineInformationCircle />
     </Link>

@@ -3,6 +3,7 @@ import { useTodoStore } from "../../store/todoStore";
 import { AnimatePresence } from "framer-motion";
 
 import { TodoContent } from "../TodoContent";
+import { EmptyTodo } from "../EmptyTodo";
 
 type Props = {};
 
@@ -12,11 +13,17 @@ export const TodoList = (props: Props) => {
   console.log(todos);
   return (
     <div className="my-8 w-[70%]">
-      <div className="relative flex max-h-[32rem] flex-col items-center justify-center gap-4 p-4">
+      <div
+        className={`relative flex max-h-[25rem] flex-col gap-4 2xl:max-h-[35rem] ${
+          todos.length > 0 ? "overflow-y-auto" : "overflow-hidden"
+        } p-4`}
+      >
         <AnimatePresence>
-          {todos.map((todo) => (
-            <TodoContent todo={todo} key={todo.id} />
-          ))}
+          {todos.length > 0 ? (
+            todos.map((todo) => <TodoContent todo={todo} key={todo.id} />)
+          ) : (
+            <EmptyTodo />
+          )}
         </AnimatePresence>
       </div>
     </div>

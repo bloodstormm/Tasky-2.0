@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div className="relative h-screen w-full lg:overflow-hidden">
+    <div className="relative h-screen w-full xl:overflow-hidden">
       <Router>
         <RoutesContainer />
       </Router>
