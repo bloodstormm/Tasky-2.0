@@ -1,10 +1,6 @@
-import { motion, useIsPresent, LayoutGroup } from "framer-motion";
-import { useState } from "react";
-import { FiEdit2, FiTrash } from "react-icons/fi";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import { motion, useIsPresent } from "framer-motion";
 import { useTodoStore } from "../../store/todoStore";
 import { TodoType } from "../../types/TodoType";
-import { EditTodoModal } from "../EditTodoModal";
 import { TodoOptions } from "../TodoOptions";
 
 type Props = {
@@ -18,10 +14,15 @@ export const TodoContent = ({ todo }: Props) => {
 
   const animations = {
     layout: true,
-    initial: { scale: 0, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
+    initial: { scale: 0.5, opacity: 0 },
+    animate: { scale: 1, opacity: 1, height: "auto" },
     exit: { scale: 0, opacity: 0 },
-    transition: { type: "spring", ease: "easeInOut", duration: 0.7 },
+    transition: {
+      type: "spring",
+      ease: "easeInOut",
+      bounce: 0,
+      duration: 0.7,
+    },
   };
 
   return (
@@ -31,8 +32,8 @@ export const TodoContent = ({ todo }: Props) => {
         position: isPresent ? "relative" : "absolute",
       }}
       key={todo.id}
-      className={`${todo.status_completed && "bg-[#13131a] line-through"} 
-        z-0 flex min-h-[5rem] w-full items-center justify-between  rounded-lg bg-[#232930] px-7 `}
+      className={`${todo.status_completed && "bg-[#24272c]"} 
+        z-0 flex min-h-[5rem] w-full items-center justify-between transition-colors rounded-lg bg-[#232930] px-7 `}
     >
       <div className="flex gap-4">
         <input
@@ -43,7 +44,9 @@ export const TodoContent = ({ todo }: Props) => {
             hover:checked:bg-accent focus:ring-accent/40 focus:ring-offset-0 focus:checked:bg-accent "
           onClick={() => markAsCompleted(todo.id)}
         />
-        <p>{todo.content}</p>
+        <p className={`${todo.status_completed && "line-through"}`}>
+          {todo.content}
+        </p>
       </div>
       <div className="relative z-[1]">
         <TodoOptions todoID={todo.id} todoContent={todo.content} />

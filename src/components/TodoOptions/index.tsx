@@ -23,7 +23,7 @@ export const TodoOptions = ({ todoID, todoContent }: Props) => {
       type: "spring",
       ease: "easeInOut",
       duration: 0.7,
-      bounce: 0.3,
+      bounce: 0.2,
     },
   };
 

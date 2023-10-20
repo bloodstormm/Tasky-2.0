@@ -5,17 +5,13 @@ import { AnimatePresence } from "framer-motion";
 import { TodoContent } from "../TodoContent";
 import { EmptyTodo } from "../EmptyTodo";
 
-type Props = {};
-
-export const TodoList = (props: Props) => {
+export const TodoList = () => {
   const todos = useTodoStore((state) => state.todos);
-
-  console.log(todos);
   return (
     <div className="my-8 w-[70%]">
       <div
-        className={`relative flex max-h-[25rem] flex-col gap-4 2xl:max-h-[35rem] ${
-          todos.length > 0 ? "overflow-y-auto" : "overflow-hidden"
+        className={`relative flex h-[35rem] flex-col items-center gap-4 ${
+          todos.length > 0 && "overflow-y-auto"
         } p-4`}
       >
         <AnimatePresence>

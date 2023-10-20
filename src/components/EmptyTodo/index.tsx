@@ -11,12 +11,12 @@ export const EmptyTodo = () => {
       style={{
         position: isPresent ? "relative" : "absolute",
       }}
-      transition={{ duration: 0.8, ease: [0.6, 0.01, -0.05, 0.9] }}
-      className=" mx-auto text-center"
+      transition={{ duration: 0.8, ease: [0.6, 0.01, 0.05, 0.9] }}
+      className="mx-auto text-center"
     >
-      <img src={emtyTodo} alt="" className="mx-auto w-1/2 2xl:w-full" />
+      <img src={emtyTodo} alt="" className="mx-auto w-1/2 2xl:w-11/12" />
       <h1 className="mt-12 text-4xl font-semibold ">
-        Parece que está tudo calmo por aqui.
+        Você não tem nenhuma tarefa.
       </h1>
       <p className="mt-2">Adicione uma nova tarefa!</p>
     </motion.div>

@@ -14,11 +14,11 @@ function App() {
       <div className="redWeak__gradient absolute -left-[26rem] -top-80 z-0 h-1/2 w-1/4"></div>
       <img
         src={lines}
-        className="absolute -bottom-20 right-0 w-1/4 opacity-50"
+        className="absolute -bottom-20 right-0 w-1/4 -z-10 opacity-50"
       />
       <img
         src={lines2}
-        className="absolute -top-0 left-0 z-10 w-1/4 opacity-50"
+        className="absolute -top-0 left-0 -z-10 w-1/4 opacity-50"
       />
     </div>
   );

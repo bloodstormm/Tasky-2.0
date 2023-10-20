@@ -14,10 +14,10 @@ type Props = {};
 export const About = (props: Props) => {
   return (
     <motion.section
-      initial={{ opacity: 0, y: "100%" }}
+      initial={{ opacity: 0, y: "50%" }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: "100%" }}
-      transition={{ duration: 1.2, ease: [0.6, 0.01, -0.05, 0.9] }}
+      exit={{ opacity: 0, y: "50%" }}
+      transition={{ duration: 1, ease: [0.6, 0.01, 0.05, 0.9] }}
       className="container mx-auto h-screen w-screen px-8 xl:px-0 "
     >
       <div
@@ -25,15 +25,15 @@ export const About = (props: Props) => {
         lg:flex-row lg:pt-16 lg:text-left 2xl:gap-x-24"
       >
         <motion.div
-          initial={{ opacity: 0, y: "-80%" }}
+          initial={{ opacity: 0, y: "-30%" }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: "-80%" }}
-          transition={{ duration: 1.2, ease: [0.6, 0.01, -0.05, 0.9] }}
+          exit={{ opacity: 0, y: "-30%" }}
+          transition={{ duration: 1, ease: [0.6, 0.01, 0.05, 0.9] }}
           className="order-2 flex-1 lg:order-none"
         >
           <motion.img
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 1.2, ease: [0.6, 0.01, -0.05, 0.9] }}
+            transition={{ duration: 1, ease: [0.6, 0.01, 0.05, 0.9] }}
             src={imgAbout}
             alt=""
             className="mx-auto mb-10 w-full rounded-3xl p-4 sm:mb-0 md:w-3/5 lg:w-full xl:w-4/5"

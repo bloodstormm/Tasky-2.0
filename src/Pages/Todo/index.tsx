@@ -1,31 +1,27 @@
 import { NewTodo } from "../../components/NewTodo";
-import { RemoveAllButton } from "../../components/RemoveAll";
 import { TodoList } from "../../components/TodoList";
 import { Link } from "react-router-dom";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import { motion } from "framer-motion";
 
-type Props = {};
-
 export const Todo = () => (
   <motion.div
-    initial={{ opacity: 0, y: "-100%" }}
+    initial={{ opacity: 0, y: "10%" }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: "-70%" }}
-    transition={{ duration: 1, ease: [0.6, 0.01, -0.05, 0.9] }}
+    exit={{ opacity: 0, y: "-10%"}}
+    transition={{ duration: 1.5, type: 'spring', bounce: 0.3 }}
     className="container relative z-10 mx-auto flex flex-col items-center py-8 sm:p-8 lg:overflow-hidden"
   >
     <motion.h1
-      initial={{ opacity: 0, y: "80%" }}
+      initial={{ opacity: 0, y: "20%" }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "-20%" }}
-      transition={{ duration: 1, delay: 0.8, ease: [0.6, 0.01, -0.05, 0.9] }}
+      transition={{ duration: 1, type: 'spring', bounce: 0.3 }}
       className="text-center text-4xl font-semibold sm:text-left"
     >
-      Tasky 2.0
+      Tasky 2
     </motion.h1>
     <NewTodo />
-    <RemoveAllButton />
     <TodoList />
 
     <Link
